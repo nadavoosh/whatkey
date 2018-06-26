@@ -1,0 +1,15 @@
+<html>
+    <title>What Key Am I Pressing?</title>
+    <body>
+    <script>
+      window.addEventListener("keydown", event => {
+        let override;
+        if (event.keyCode === 32) {
+            override = 'SPACEBAR'
+        }
+        document.getElementById("pressed").innerHTML = override || event.key;
+      });
+    </script>
+    <div id="pressed"></div>
+</body>
+</html>
