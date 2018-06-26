@@ -1,15 +1,20 @@
+<!DOCTYPE html>
 <html>
+
+<head>
+    <link rel="stylesheet" href="styles.css">
     <title>What Key Am I Pressing?</title>
-    <body>
-    <script>
-      window.addEventListener("keydown", event => {
-        let override;
-        if (event.keyCode === 32) {
-            override = 'SPACEBAR'
-        }
-        document.getElementById("pressed").innerHTML = override || event.key;
-      });
-    </script>
-    <div id="pressed"></div>
+</head>
+
+<body>
+    <script src="keydown.js"></script>
+    <div id="instructions" class="inst">Press a key.</div>
+    <div id="pressed" class="letter"></div>
+    <footer class="footer">
+        <p>
+            <a href="https://github.com/nadavoosh/whatkey">feedback welcome</a>
+        </p>
+    </footer>
 </body>
+
 </html>
