@@ -1,20 +1,57 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <link rel="stylesheet" href="styles.css">
+        <title>What Key Am I Pressing?</title>
+        <link rel="icon" href="favicon.ico">
+        <script defer>
+        let keysPressed = {};
 
-<head>
-    <link rel="stylesheet" href="styles.css">
-    <title>What Key Am I Pressing?</title>
-</head>
+            document.addEventListener('keydown', (event) => {
+                keysPressed[event.key] = true;
+                document.getElementById("pressed").innerHTML = Object.keys(keysPressed).join(' + ');
+            }); // when a key is pressed, set the value of the key in the keysPressed object to true, and display the keys pressed in the pressed div.
+            
+            document.addEventListener('keyup', (event) => {
+                delete keysPressed[event.key];
+            }); // when a key is released, delete the key from the keysPressed object.
+            
+            document.onkeydown = function (e) {
+                return false;
+            } // prevent the user from using the keyboard, so the listener is called instead of whatever keybinds they have.
+        </script>
+        <style>
+            .indicator {
+            font-size: 4em;
+            color: #bed5ff;
+            }
 
-<body>
-    <script src="keydown.js"></script>
-    <div id="instructions" class="inst">Press a key.</div>
-    <div id="pressed" class="letter"></div>
-    <footer class="footer">
-        <p>
-            <a href="https://github.com/nadavoosh/whatkey">feedback welcome</a>
-        </p>
-    </footer>
-</body>
+            body {
+                background: #222222;
+                font-family: Consolas, monaco, monospace;
+                text-align: center;
+                margin-top: auto;
+                padding: 100px 200px;
+                color: #bed5ff;
+            } /* Changed to dark theme */
 
+            .footer {
+                position: fixed;
+                font-size: 12px;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                text-align: center;
+            }.footer a { color: #bed5ff; font-size: 2em; } /* Changed footer font size and color */
+        </style>
+    </head>
+
+    <body>
+        <div id="instructions" class="indicator">Press a key.</div>
+        <div id="pressed" class="indicator"></div>
+        <footer class="footer">
+            <p><a href="https://github.com/nadavoosh/whatkey">feedback welcome</a></p>
+        </footer>
+    </body>
 </html>
+<!-- updated August 5, 2022! -->
